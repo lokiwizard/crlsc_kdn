@@ -1,0 +1,43 @@
+data:
+  root: D:\pyproject\crlsc_kdn\datasets\afhq\train
+  max_samples: 1000
+  subset_seed: 42
+  image_size: 224
+
+model:
+  name: resnet34
+  pretrained: true
+  projection_hidden_dim: 2048
+  projection_out_dim: 128
+  alignment_hidden_dim:
+
+cloud:
+  feature_bank_dir: D:\pyproject\crlsc_kdn\stageA\stageA\afhq_database
+  top_k: 10
+  retrieval_temperature: 0.07
+  use_faiss: true
+
+train:
+  epochs: 20
+  batch_size: 64
+  num_workers: 0
+  temperature: 0.2
+  lambda_align: 0.5
+  align_both_views: true
+
+optimizer:
+  lr: 0.001
+  weight_decay: 0.0001
+
+runtime:
+  device: auto
+  amp: true
+  seed: 42
+
+init:
+  load_stageb_checkpoint: true
+  stageb_checkpoint: D:\pyproject\crlsc_kdn\stageB\stageB\afhq_ssl\checkpoints\best.pt
+
+output:
+  dir: stageC/afhq_joint
+  checkpoint_interval: 5

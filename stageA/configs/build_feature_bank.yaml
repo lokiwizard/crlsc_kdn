@@ -1,0 +1,19 @@
+data:
+  root: D:\pyproject\crlsc_kdn\datasets\afhq\train
+  max_samples:
+
+model:
+  name: openai/clip-vit-base-patch16
+  checkpoint_root: D:\pyproject\crlsc_kdn\checkpoints\cloud_side\models--openai--clip-vit-base-patch16
+  local_files_only: True
+
+runtime:
+  device: auto
+  batch_size: 8
+  num_workers: 0
+
+retriever:
+  use_faiss: true
+
+output:
+  dir: stageA/afhq_database

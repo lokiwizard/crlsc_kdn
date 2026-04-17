@@ -1,0 +1,21 @@
+[project]
+name = "crlsc-kdn"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "Pillow>=10.0",
+    "PyYAML>=6.0",
+    "torch>=2.2",
+    "timm>=1.0.0",
+    "transformers>=4.40",
+    "faiss-cpu>=1.8.0",
+    "tqdm>=4.66",
+]
+
+[project.scripts]
+stagea-build-bank = "stageA.build_cloud_feature_bank:main"
+stageb-train-local-ssl = "stageB.train_local_ssl:main"
+stagec-train-joint = "stageC.train_joint_alignment:main"
